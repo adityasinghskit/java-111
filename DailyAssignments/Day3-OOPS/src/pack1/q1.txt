@@ -1,0 +1,11 @@
+1.
+Static variable:
+1)Static variable are identified to keyword static. 
+2)They are loaded in the RAM. 
+3)Static variables can be accessed directly. 
+
+Non-static variables:
+1)Non-static variables are loaded in the hard disk. 
+2)Memory is left empty in the heap area of RAM. 
+3)They can be accessed with the help of objects. 
+4)With the use of non-static variables Java can do dynamic loading. 
