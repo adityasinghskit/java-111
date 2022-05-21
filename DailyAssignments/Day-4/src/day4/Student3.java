@@ -40,7 +40,7 @@ public String getName() {
 public void setName(String n) {
 	this.name=n;
 }
-public String getAdddress() {
+public String getAddress() {
 	return this.address;
 }
 public void setAddress(String n) {
@@ -61,10 +61,10 @@ public Student3 getStudent(boolean isFromNIT) {
 	}
 }
 public void studentDetails() {
-	System.out.println("Student rollno:"+this.roll);
-	System.out.println("Student name:"+this.name);
-	System.out.println("Student address:"+this.address);
-	System.out.println("Student college:"+this.collegeName);
+	System.out.println("Student rollno:"+this.getRoll());
+	System.out.println("Student name:"+this.getName());
+	System.out.println("Student address:"+this.getAddress());
+	System.out.println("Student college:"+this.getCollege());
 }
 public static void main(String[] args) {
 	
