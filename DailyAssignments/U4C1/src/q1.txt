@@ -1,0 +1,27 @@
+Q1.
+1. String is immutable so as to save memory.
+   E.g. String str1= "Hello";
+	String str2= "Hello";
+	In this case since both str1, str2 refer to the same 
+	text only one String will be created and both str1, str2
+	will point to the same String hence saving memory.
+
+2. String: 
+   String is immutable hence no chnages can be done after a String
+   is formed.
+   E.g. String str1= "Welcome";
+	str1 + "to Masai!";
+	No changes will be reflected in str1. In order to save the
+	changes a new String has to created each time.
+	String str2= str1 + "to Masai!";
+   String builder:
+   String builder can solve this problem, It is used when we want 
+   an mutable String. Using string builder we can perform above 
+   operation using one SB.
+   E.g. StringBuilder str1= new StringBuilder("Welcome");
+	str1=str1 + "to Masai!";
+	
+3. String opertions
+    Concat: It is use to concat two string.
+	E.g. Str1.concat(Str2);
+	
