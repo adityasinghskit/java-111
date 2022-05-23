@@ -22,6 +22,16 @@ Q1.
 	str1=str1 + "to Masai!";
 	
 3. String opertions
-    Concat: It is use to concat two string.
+    1. Concat: It is use to concat two string.
 	E.g. Str1.concat(Str2);
+    2. equals: This is used to compare two strings
+	E.g. Str1.equals(Str2);
+    3. charAt: This gives character at a particular index
+         E.g. Str.charAt(0);
+    4. length(): this gives length of string
+	E.g. Str1.length();
+    5. split(""): this is used to convert a String to array
+        E.g. str1.split(" ");// if str1="Welcome" it will return 
+             {W,e,l,c,o,m,e}
+
 	
