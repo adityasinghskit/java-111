@@ -1,0 +1,37 @@
+	
+	this keyword:
+	
+	Two main uses of this keyword:
+	1. To avoid confusion between keywords
+	E.g.
+	public class Student{
+	int id;
+	String name;
+	double salary;
+	
+	void setId(int id){
+		this.id=id;
+	}
+	public void main(String args[]){
+		Student s1=new Student();
+		
+	}
+
+	}
+	here we have use variable name as id and also 
+	argument as id so to avoid confusion writing
+	 id=id;  we use this.
+	2. When using objects we use this to update variables for 
+	that object
+	In the above Example to update the instance var of s1
+	 we use this keyword.
+	
+	Super keyword:
+	When we create an object using method, super() is 
+	implemented by default.
+	Super created an object of the parent class hence 
+	loading all non static elements. 
+	This process goes on till the object of Object class
+	is created.
+	hence loading all the non static methods and variables 
+	available to a class.
