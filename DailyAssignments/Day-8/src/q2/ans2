@@ -1,0 +1,18 @@
+2.
+Class cast exception:-
+Class cast exception occurs when you try to caste a class 
+into a class which is not compatible :
+ E.g.
+ class A{...}
+ class B extends A{...}
+ class C extends A{...}
+ 
+ 1. You can caste any of the objects to Object since all
+ 	classes inherit from Object class.
+ 2. Objects from B & C can be casted to A since A is 
+ 	parent class of B & C.
+ 3. An object of B but referenced to A can be casted to 
+ 	B since it's object of B.
+ 4. Up casting B or C to A is not possible just like in 
+ 	primitive variables.
+ 5. B cannot be casted to C or vice-versa.
