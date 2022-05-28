@@ -6,8 +6,8 @@ public class Main {
 	public int[] findAndReturnPrimeNumbers(int[] inputArray){
 		//int[] arr = {10,12,5,50,11,14,15};
 		int n=inputArray.length;
-		int[] out=new int[n];
-		//StringBuilder sb= new StringBuilder();
+		//int[] out=new int[n];
+		StringBuilder sb= new StringBuilder();
 		
 	for(int i=0;i<inputArray.length;i++) {
 		boolean flag=false;
@@ -18,13 +18,16 @@ public class Main {
 			}
 		}
 		if(!flag) {
-			if(out.length==0)
+			/*if(out.length==0)
 			out[0]=inputArray[i];
 			else
-				out[out.length-1]=inputArray[i];
+				out[out.length-1]=inputArray[i];*/
+			sb=sb.append(inputArray[i]+" ");
 		}
 	}
-	return out;
+	//return out;
+	String str=sb.toString();
+	return Integer.parseInt((str).trim().split(" "));
 	}
 	
 public static void main(String[] args) {
