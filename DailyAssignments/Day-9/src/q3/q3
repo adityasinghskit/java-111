@@ -1,0 +1,29 @@
+q3
+Multiple inheritance in java
+Java does not allow multiple inheritance in classes.
+In case a child class is inheriting 2 classes and 
+both the parent classes have a method with same name
+than this creates ambiguity for the compiler to call
+which method.
+For example:
+//Parent class1
+class A{
+public void meth1(){
+
+}
+}
+//Parent class2
+class B{
+public void meth1(){
+}
+}
+//Child class
+class C extends A{
+
+}
+class C extends B{
+
+}
+C c1= new C();
+C.meth1(); //Ambigious since compilor is confused 
+		   //which meth1 to call. 
