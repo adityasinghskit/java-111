@@ -1,0 +1,23 @@
+q3
+Dynamic Polymorphism
+Also known  as runtime polymorphism, See the example: 
+
+public class A{
+void methodA(){
+System.out.println("Inside methodA of class A");
+}
+}
+class B extends A{
+@Override
+void methodA(){
+System.out.println("Inside methodA of class B");
+}
+}
+public static void main(String args[]){
+	A a1= new B();
+	a1.methodA();
+}
+
+At runtime it will be decided if methodA  is overridden by classB, 
+If it is then the Overridden methodA will be called.
+This process of deciding at runtime is called "runtime polymorphism" 
