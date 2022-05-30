@@ -44,6 +44,13 @@ class OLA {
 		}
 	}
 	public int calculateBill(Car car) {
-		return car.getNumberOfKms()*car.get;
+		if(car instanceof HachBack) {
+			HachBack h1=(HachBack)car;
+			return h1.getNumberOfKms()*h1.farePerKm;
+		} else{
+			Sedan s1=(Sedan)car;
+			return s1.getNumberOfKms()*s1.farePerKm;
+		}
+		
 	}
 }
