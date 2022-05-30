@@ -3,7 +3,7 @@ package q3;
 public class Car {
 private int numberOfPassenger;
 private int numberOfKms;
-int farePerKm;
+//int farePerKm;
 public Car() {
 	
 }
@@ -23,7 +23,7 @@ public void setNumberOfKms(int numberOfKms) {
 }
 class Sedan extends Car{
 	final int farePerKm= 20;
-	
+
 }
 class HachBack extends Car{
 	final int farePerKm= 15;
@@ -44,6 +44,6 @@ class OLA {
 		}
 	}
 	public int calculateBill(Car car) {
-		return car.getNumberOfKms()* car.farePerKm;
+		return car.getNumberOfKms()*car.get;
 	}
 }

@@ -1,0 +1,31 @@
+q1
+ public class A {
+String name;
+String gender;
+
+}
+class B extends A{
+	int instructorId;
+	int salary;
+	public static Person generatePerson(Person person) {
+	A a1= new A();
+}
+}
+
+IS-A relationship:
+IN the above example classB is in a IS-A relationship with classA.
+Since B extends A ie B is a child of A so B is A.
+HAS-A relationship:
+In the above example B has an object of A in the main method. Hence 
+class B HAS-A class A object. B Has-A A.
+
+Access modifiers:
+A method, var when 
+Public:
+Can be accessed in side the package and also outside the package.
+Default:
+Can be accessed in side the package but not outside the package.
+Protected:
+Can be accessed in side the package but can be accesss through inheritance.
+Private:
+Can be access only in the same class.
