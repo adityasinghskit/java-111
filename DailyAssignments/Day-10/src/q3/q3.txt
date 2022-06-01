@@ -1,0 +1,71 @@
+3. Explain abstract class and interface with an example.
+Abstract class:
+Abstract class is used to achieve partial abstraction ie it contains 
+abstract methods as well as non-abstract methods. It is used in 
+applications where we haeve some info.
+1. A class is an abstract class if it may or may not contain 
+abstract methods.
+2. We cannot make an object of abstract class.But an abstract can refer
+to child class and null is also valid.
+Example:
+abstract class A{
+//Can contain concrete methods as well
+void funA(){
+syso("Inside funA of A");
+}
+abstract void funX();
+abstract void funY();
+}
+3. Child class of abstract class can either:
+1) Override all the abstract methods. 
+2) Mark itself abstract and do not override.
+Example:
+//B extends A
+//Option 1.
+class B extends A{
+@Override
+void funX(){
+syso("Inside funX of B");
+}
+void funY(){
+syso("Inside funY of B");
+}
+}
+//Option 2
+//Mark itself abstract
+abstract class B extends A{
+//do not override
+}
+
+Interface:
+Interface is used for total abstraction ie 
+1. All the methods are by default "public abstract".
+2. All the variables are by deafault "public final".
+It Used in applications where we are not aware of what might be 
+required in future.
+Like abstract class all the methods will override when implemented.
+Note: Final cannot be used with any method, also private interface 
+is not possible.
+Example:
+//interface Intr with 2 abstract methods
+interface Intr{
+//No need to write abstract
+void funI1();
+void funI2();
+} 
+//Intr2 implements Intr
+interface Intr2{
+@Override
+void funI1(){
+syso("Inside funI1 of Intr2");
+}
+@Override
+void funI2(){
+syso("Inside funI2 of Intr2");
+}
+} 
+Java 1.8 introduction:
+1. default method: It is a type of method that can have a body and 
+will be automatically inherited no need to Override.
+2. static method: It can also have a body but cannot be inherited. Still
+ if need arise to call it, you can use interface name to call it.
