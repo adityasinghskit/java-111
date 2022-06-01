@@ -6,18 +6,14 @@ public class Main {
 public static Person generatePerson(Person person) {
 	Scanner s1= new Scanner(System.in);
 	System.out.println("Enter details: ");
-	/*System.out.println("Name:");
-	String name=s1.next();
-	System.out.println("Gender");
-	String gender=s1.next();
-	System.out.println("type: ");
-	String type=s1.next();*/
+	
 	if(person instanceof Instructor) {
-		Instructor i1=new Instructor();
+		Instructor i1=(Instructor)person;
 		System.out.println("Instructor ID");
 		i1.instructorId=s1.nextInt();
 		System.out.println("Salary: ");
 		i1.salary=s1.nextInt();
+		
 		
 		i1.address=new Address();
 		System.out.println("City: ");
@@ -29,7 +25,7 @@ public static Person generatePerson(Person person) {
 		return i1;
 		
 	}else {
-		Student std1= new Student();
+		Student std1= (Student)person;
 		System.out.println("Student ID");
 		std1.studentId=s1.nextInt();
 		System.out.println("Course enrolled: ");

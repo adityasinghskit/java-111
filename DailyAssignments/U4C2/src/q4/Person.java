@@ -4,12 +4,6 @@ public class Person {
 String name;
 String gender;
 
-int instructorId;
-int salary;
-int studentId;
-String courseEnrolled;
-int courseFee;
-Address address;
 @Override
 public String toString() {
 	return "Person [name=" + name + ", gender=" + gender + "]";
