@@ -10,7 +10,7 @@ public static void main(String[] args) {
 	System.out.println("Enter Product info:");
 	ArrayList<Product> al=new ArrayList<>();
 	for(int i=0;i<4;i++) {
-		System.out.println("Enter product"+i+1+"info");
+		System.out.println("Enter product"+(i+1)+"info");
 		System.out.println("ID:");
 		int id=s1.nextInt();
 		System.out.println("Name:");
@@ -23,10 +23,27 @@ public static void main(String[] args) {
 	System.out.println("Enter sorting choice");
 	int choice=s1.nextInt();
 	if(choice==1) {
+		Collections.sort(al,new SortByPrice());
 		for(Product p: al) {
-			System.out.println(p.);
+			System.out.println(p);
+		}
+	}else if(choice==2) {
+		Collections.sort(al,new SortByName());
+		for(Product p: al) {
+			System.out.println(p);
+		}
+	}else if(choice==3) {
+		Collections.sort(al,new SortById());
+		for(Product p: al) {
+			System.out.println(p);
+		}
+	}else {
+		Collections.sort(al,new SortById());
+		for(Product p: al) {
+			System.out.println(p);
 		}
 	}
+	
 	s1.close();
 	
 }
