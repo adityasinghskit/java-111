@@ -1,5 +1,7 @@
 package q1;
 
+import java.util.Objects;
+
 public class Student {
 private int roll;
 private String name;
@@ -34,6 +36,21 @@ public void setMarks(int marks) {
 @Override
 public String toString() {
 	return "Student [roll=" + roll + ", name=" + name + ", marks=" + marks + "]";
+}
+@Override
+public int hashCode() {
+	return Objects.hash(marks, name, roll);
+}
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Student other = (Student) obj;
+	return marks == other.marks && Objects.equals(name, other.name) && roll == other.roll;
 }
 
 }
