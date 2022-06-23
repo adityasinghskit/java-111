@@ -1,0 +1,68 @@
+RaceCondition:
+
+Race condition occurs when we are trying to write the same piece of code 
+for E.g account balance. Suppose Person1 and Person2 bot are tried to 
+withdraw money from their account at the same time, At the start the account has 1000 rupees
+Hence 1 withdraw 700Rs and other 900Rs. Now Acc balance is -600Rs which is 
+blunder.
+To overcome this problem we ony allow the customers to withdraw money 
+once at a time. This is done by synchronizing threads.
+
+//Race condition example:
+Counter.java:
+--------------
+package q1;
+
+public class Counter implements Runnable
+{
+private int c = 0;
+public void increment(){
+try
+{
+Thread.sleep(10);
+}
+catch (InterruptedException e)
+{
+//Auto-generated catch block
+e.printStackTrace();
+}
+c++;
+}
+public void decrement(){
+c--;
+}
+public int getValue(){
+return c;
+}
+@Override
+public void run()
+{
+	synchronized (this) { //Adding a synchronize block will make all 3 threads work one at a time
+		//incrementing
+		this.increment();
+		System.out.println("Value for Thread After increment " + Thread.currentThread().getName() + " " + this.getValue());
+		//decrementing
+		this.decrement();
+		System.out.println("Value for Thread at last " + Thread.currentThread().getName() + " " + this.getValue());
+		}
+	}
+
+}
+
+RaceConditionDemo.java:
+-----------------------
+package q1;
+
+public class RaceConditionDemo
+{
+public static void main(String args[])
+{
+Counter counter = new Counter();
+Thread t1 = new Thread(counter, "Thread-1");
+Thread t2 = new Thread(counter, "Thread-2");
+Thread t3 = new Thread(counter, "Thread-3");
+t1.start();
+t2.start();
+t3.start();
+}
+}

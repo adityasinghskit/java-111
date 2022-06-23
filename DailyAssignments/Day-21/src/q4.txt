@@ -1,0 +1,45 @@
+wait & notify:
+
+1. wait(),notify()& notifyAll() is used to gain partial over the 
+multiple threads operating. 
+2. These methods can only be called in synchronised methods or blocks.
+
+
+Example:
+--------
+Main.java
+---------
+public class Main{
+	public static void main(String[] args)throws Exception {
+		MyThread mt=new MyThread();
+		mt.start();//getting the lock of mt object
+		synchronized (mt) {// 
+		System.out.println("main thread calls the wait method");
+		mt.wait(2000);// Sends the main thread into blocked state
+		System.out.println("main thread got the notification");
+		System.out.println(mt.num);
+		}
+		}
+	}
+MyThread.java
+-------------
+class MyThread extends Thread{
+int num=0;
+@Override
+public void run() {
+synchronized (this) {
+System.out.println("child thread performing calculation");
+for(int i=0;i<=100;i++){
+num=num+i;
+}
+System.out.println("child thread giving the notification");
+this.notify();// Sends the main function into runnable state
+}
+}
+}
+
+mt.wait(): wait is called by the main thread on the mt thread so main will 
+be blocked un till it comes across mt.notify().
+
+mt.notify(): notify will send the main thread into runnable state and when 
+thead scheduler turns to main thread it will get into running state.
