@@ -1,0 +1,15 @@
+Transient Keyword:
+------------------
+
+Let's say we want to serialize a Student object which has the following fields-
+
+1. String email;
+2. String password;
+
+But password being sensitive we want to ignore the password in serialization
+so we can add transient keyword when declaring password-
+
+transient String password;
+
+Orignal value of Password now will be ignored during serialization. 
+During deserialization default value of Password field will be displayed.  
