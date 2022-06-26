@@ -1,16 +1,20 @@
 package q1;
 
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Main {
-	public static void main(String[] args) throws Exception{
-		Student s1= new Student(122,"Aditya",22);
-		FileOutputStream f1= new FileOutputStream("d://abc.txt");
-		ObjectOutputStream obj1= new ObjectOutputStream(f1);
-		obj1.writeObject(s1);
-		obj1.flush();
-		obj1.close();
-		System.out.println("Success!");
-		}
-		}
+public static void main(String[] args) throws IOException {
+	FileReader f1= new FileReader("abc.txt");
+	BufferedReader br= new BufferedReader(f1);
+	String line=br.readLine();
+	while(line!=null) {
+		System.out.println(line);
+		line=br.readLine();
+	}
+	br.close();
+}
+}
