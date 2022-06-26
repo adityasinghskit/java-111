@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class Main {
 	public static void main(String[] args) throws IOException {
@@ -13,7 +14,7 @@ public class Main {
 		fr.read(chr);
 		int count=0;
 		for(char c:chr) {
-			if(c=='a') {
+			if(Pattern.matches("[aA]",Character.toString(c))) {
 				count++;
 			}
 		}
