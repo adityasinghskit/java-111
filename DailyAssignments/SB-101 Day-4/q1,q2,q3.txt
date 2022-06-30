@@ -1,0 +1,51 @@
+q1.
+
+create table city(
+id int,
+name varchar(17),
+countrycode varchar(3),
+district varchar(20),
+population int
+);
+
+
+insert into city values(3878,'Scottsdale','USA','Arizona',202705);
+insert into city values(3965,'Corona','USA','California',90000);
+insert into city values(3973,'Concord','USA','California',121780);
+insert into city values(3977,'Cedar Rapids','USA','Iowa',120758);
+insert into city values(3982,'Coral Springs','USA','Florida',87456);
+
+desc city;
++------+---------------+-------------+------------+------------+
+| id   | name          | countrycode | district   | population |
++------+---------------+-------------+------------+------------+
+| 3878 | Scottsdale    | USA         | Arizona    |     202705 |
+| 3965 | Corona        | USA         | California |      90000 |
+| 3973 | Concord       | USA         | California |     121780 |
+| 3977 | Cedar Rapids  | USA         | Iowa       |     120758 |
+| 3982 | Coral Springs | USA         | Florida    |      87456 |
++------+---------------+-------------+------------+------------+
+
+select * from city where countrycode='USA' AND population>100000;
++------+--------------+-------------+------------+------------+
+| id   | name         | countrycode | district   | population |
++------+--------------+-------------+------------+------------+
+| 3878 | Scottsdale   | USA         | Arizona    |     202705 |
+| 3973 | Concord      | USA         | California |     121780 |
+| 3977 | Cedar Rapids | USA         | Iowa       |     120758 |
++------+--------------+-------------+------------+------------+
+
+q2.
+select sum(population) from city where district='California';
++-----------------+
+| sum(population) |
++-----------------+
+|          211780 |
++-----------------+
+q3.
+select round(avg(population)) from city;
++------------------------+
+| round(avg(population)) |
++------------------------+
+|                 124540 |
++------------------------+
