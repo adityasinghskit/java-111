@@ -1,0 +1,268 @@
+q1.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| movies             |
+| mysql              |
+| performance_schema |
+| sb101db            |
+| sys                |
++--------------------+
+6 rows in set (0.03 sec)
+
+mysql> use sb101db;
+Database changed
+mysql> show tables;
++-------------------+
+| Tables_in_sb101db |
++-------------------+
+| city              |
+| courses           |
+| student           |
+| teachers          |
++-------------------+
+4 rows in set (0.06 sec)
+
+mysql> create table employee(
+    -> empID int primary key,
+    -> empFname varchar(12),
+    -> empLname varchar(12),
+    -> department varchar(15),
+    -> project varchar(10),
+    -> address varchar(20),
+    -> dob varchar(15),
+    -> gender varchar(2),
+    -> salary int
+    -> );
+Query OK, 0 rows affected (0.99 sec)
+mysql> desc employee;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| empID      | int         | NO   | PRI | NULL    |       |
+| empFname   | varchar(12) | YES  |     | NULL    |       |
+| empLname   | varchar(12) | YES  |     | NULL    |       |
+| department | varchar(15) | YES  |     | NULL    |       |
+| project    | varchar(10) | YES  |     | NULL    |       |
+| address    | varchar(20) | YES  |     | NULL    |       |
+| dob        | varchar(15) | YES  |     | NULL    |       |
+| gender     | varchar(2)  | YES  |     | NULL    |       |
+| salary     | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+9 rows in set (0.17 sec)
+mysql> insert into employee values("Sanjay","Mahra","HR","P1","HYD","01/12/1976"
+,"M",50000);
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into employee values(1,"Sanjay","Mahra","HR","P1","HYD","01/12/197
+6","M",50000);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into employee values(2,"Ananya","Mishra","Admin","P2","DEL","02/05
+/1986","F",75000);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into employee values(3,"Rohan","Diwan","Account","P1","BOM","01/01
+/1990","M",90000);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into employee values(4,"Sonia","Kulkarni","HR","P3","HYD","02/05/1
+992","F",50000);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> insert into employee values(5,"Priya","Thakur","Development","P2","BAN","
+23/02/1992","F",100000);
+Query OK, 1 row affected (0.06 sec)
+mysql> select * from employee;
++-------+----------+----------+-------------+---------+---------+------------+--
+------+--------+
+| empID | empFname | empLname | department  | project | address | dob        | g
+ender | salary |
++-------+----------+----------+-------------+---------+---------+------------+--
+------+--------+
+|     1 | Sanjay   | Mahra    | HR          | P1      | HYD     | 01/12/1976 | M
+      |  50000 |
+|     2 | Ananya   | Mishra   | Admin       | P2      | DEL     | 02/05/1986 | F
+      |  75000 |
+|     3 | Rohan    | Diwan    | Account     | P1      | BOM     | 01/01/1990 | M
+      |  90000 |
+|     4 | Sonia    | Kulkarni | HR          | P3      | HYD     | 02/05/1992 | F
+      |  50000 |
+|     5 | Priya    | Thakur   | Development | P2      | BAN     | 23/02/1992 | F
+      | 100000 |
++-------+----------+----------+-------------+---------+---------+------------+--
+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from employee where department="HR";
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+| empID | empFname | empLname | department | project | address | dob        | ge
+nder | salary |
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+|     1 | Sanjay   | Mahra    | HR         | P1      | HYD     | 01/12/1976 | M
+     |  50000 |
+|     4 | Sonia    | Kulkarni | HR         | P3      | HYD     | 02/05/1992 | F
+     |  50000 |
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+2 rows in set (0.00 sec)
+mysql> select * from employee where gender="F";
++-------+----------+----------+-------------+---------+---------+------------+--
+------+--------+
+| empID | empFname | empLname | department  | project | address | dob        | g
+ender | salary |
++-------+----------+----------+-------------+---------+---------+------------+--
+------+--------+
+|     2 | Ananya   | Mishra   | Admin       | P2      | DEL     | 02/05/1986 | F
+      |  75000 |
+|     4 | Sonia    | Kulkarni | HR          | P3      | HYD     | 02/05/1992 | F
+      |  50000 |
+|     5 | Priya    | Thakur   | Development | P2      | BAN     | 23/02/1992 | F
+      | 100000 |
++-------+----------+----------+-------------+---------+---------+------------+--
+------+--------+
+3 rows in set (0.00 sec)
+mysql> select COUNT(*) from employee where gender="F";
++----------+
+| COUNT(*) |
++----------+
+|        3 |
++----------+
+1 row in set (0.03 sec)
+
+mysql> select * from employee where gender="F" AND department="HR";
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+| empID | empFname | empLname | department | project | address | dob        | ge
+nder | salary |
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+|     4 | Sonia    | Kulkarni | HR         | P3      | HYD     | 02/05/1992 | F
+     |  50000 |
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+1 row in set (0.00 sec)
+mysql> select empFname from employee where empFname REGEXP '^[aeiouAEIOU]';
++----------+
+| empFname |
++----------+
+| Ananya   |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select * from employee where gender="M" AND empFname REGEXP '.[aeiou]';
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+| empID | empFname | empLname | department | project | address | dob        | ge
+nder | salary |
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+|     1 | Sanjay   | Mahra    | HR         | P1      | HYD     | 01/12/1976 | M
+     |  50000 |
+|     3 | Rohan    | Diwan    | Account    | P1      | BOM     | 01/01/1990 | M
+     |  90000 |
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+2 rows in set (0.00 sec)
+
+mysql> select department from employee;
++-------------+
+| department  |
++-------------+
+| HR          |
+| Admin       |
+| Account     |
+| HR          |
+| Development |
++-------------+
+5 rows in set (0.00 sec)
+mysql> select DISTINCT(department) from employee;
++-------------+
+| department  |
++-------------+
+| HR          |
+| Admin       |
+| Account     |
+| Development |
++-------------+
+4 rows in set (0.02 sec)
+
+mysql> select * from employee where gender="F" AND salary<75000;
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+| empID | empFname | empLname | department | project | address | dob        | ge
+nder | salary |
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+|     4 | Sonia    | Kulkarni | HR         | P3      | HYD     | 02/05/1992 | F
+     |  50000 |
++-------+----------+----------+------------+---------+---------+------------+---
+-----+--------+
+1 row in set (0.00 sec)
+
+mysql> select COUNT(*) from employee where salary BETWEEN 50000 AND 100000;
++----------+
+| COUNT(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.05 sec)
+mysql> select COUNT(DISTINCT(project)) from employee;
++--------------------------+
+| COUNT(DISTINCT(project)) |
++--------------------------+
+|                        3 |
++--------------------------+
+1 row in set (0.03 sec)
+
+mysql> select count(*) from employee group by department;
++----------+
+| count(*) |
++----------+
+|        2 |
+|        1 |
+|        1 |
+|        1 |
++----------+
+4 rows in set (0.00 sec)
+
+mysql> select department,count(department) from employee group by department;
++-------------+-------------------+
+| department  | count(department) |
++-------------+-------------------+
+| HR          |                 2 |
+| Admin       |                 1 |
+| Account     |                 1 |
+| Development |                 1 |
++-------------+-------------------+
+4 rows in set (0.00 sec)
+
+mysql> select department,count(department) employee from employee group by depar
+tment;
++-------------+----------+
+| department  | employee |
++-------------+----------+
+| HR          |        2 |
+| Admin       |        1 |
+| Account     |        1 |
+| Development |        1 |
++-------------+----------+
+4 rows in set (0.00 sec)
+
+q2.
+1.
+
+UNIQUE KEY:
+1. Only unique values are allowd duplicate values are not allowed.
+2. NULL values are also allowed.
+
+PRIMARY KEY:
+1. Only unique values are allowd duplicate values are not allowed.
+2. NULL values are not allowed.
+
+2.
+SQL is not case sensitive.

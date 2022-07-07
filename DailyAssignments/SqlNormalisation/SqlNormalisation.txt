@@ -1,0 +1,221 @@
+q1.
+----
+
+mysql> create table faculty(
+    -> facultyid int primary key,
+    -> name varchar(15),
+    -> dept varchar(10),
+    -> gender varchar(10),
+    -> salary int,
+    -> workingHours int
+    -> );
+Query OK, 0 rows affected (1.22 sec)
+
+mysql> insert into faculty values(001,"Aakash","CS","M",50000,45);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into faculty values(002,"Sahil","EC","M",25000,50);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into faculty values(003,"John","HSS","M",100000,60);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into faculty values(004,"Shelley","CS","F",75000,80);
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into faculty values(005,"Anannya","CS","F",45000,100);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into faculty values(006,"Sia","HSS","F",60000,40);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> select * from faculty;
++-----------+---------+------+--------+--------+--------------+
+| facultyid | name    | dept | gender | salary | workingHours |
++-----------+---------+------+--------+--------+--------------+
+|         1 | Aakash  | CS   | M      |  50000 |           45 |
+|         2 | Sahil   | EC   | M      |  25000 |           50 |
+|         3 | John    | HSS  | M      | 100000 |           60 |
+|         4 | Shelley | CS   | F      |  75000 |           80 |
+|         5 | Anannya | CS   | F      |  45000 |          100 |
+|         6 | Sia     | HSS  | F      |  60000 |           40 |
++-----------+---------+------+--------+--------+--------------+
+6 rows in set (0.00 sec)
+mysql> update faculty set dept="Humanities and Social Sciences" where dept="HSS"
+;
+ERROR 1406 (22001): Data too long for column 'dept' at row 3
+mysql> alter table faculty modify dept varchar(30);
+Query OK, 0 rows affected (0.20 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> update faculty set dept="Humanities and Social Sciences" where dept="HSS"
+;
+Query OK, 2 rows affected (0.15 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> update faculty set dept="Electronics and Communication" where dept="EC";
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update faculty set dept="Computer Science" where dept="CS";
+Query OK, 3 rows affected (0.11 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+mysql> select * from faculty;
++-----------+---------+--------------------------------+--------+--------+------
+--------+
+| facultyid | name    | dept                           | gender | salary | worki
+ngHours |
++-----------+---------+--------------------------------+--------+--------+------
+--------+
+|         1 | Aakash  | Computer Science               | M      |  50000 |
+     45 |
+|         2 | Sahil   | Electronics and Communication  | M      |  25000 |
+     50 |
+|         3 | John    | Humanities and Social Sciences | M      | 100000 |
+     60 |
+|         4 | Shelley | Computer Science               | F      |  75000 |
+     80 |
+|         5 | Anannya | Computer Science               | F      |  45000 |
+    100 |
+|         6 | Sia     | Humanities and Social Sciences | F      |  60000 |
+     40 |
++-----------+---------+--------------------------------+--------+--------+------
+--------+
+6 rows in set (0.00 sec)
+
+q2.
+----
+
+mysql> alter table faculty add vacationHours int;
+Query OK, 0 rows affected (0.42 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+mysql> select * from faculty;
++-----------+---------+--------------------------------+--------+--------+------
+--------+---------------+
+| facultyid | name    | dept                           | gender | salary | worki
+ngHours | vacationHours |
++-----------+---------+--------------------------------+--------+--------+------
+--------+---------------+
+|         1 | Aakash  | Computer Science               | M      |  50000 |
+     45 |          NULL |
+|         2 | Sahil   | Electronics and Communication  | M      |  25000 |
+     50 |          NULL |
+|         3 | John    | Humanities and Social Sciences | M      | 100000 |
+     60 |          NULL |
+|         4 | Shelley | Computer Science               | F      |  75000 |
+     80 |          NULL |
+|         5 | Anannya | Computer Science               | F      |  45000 |
+    100 |          NULL |
+|         6 | Sia     | Humanities and Social Sciences | F      |  60000 |
+     40 |          NULL |
++-----------+---------+--------------------------------+--------+--------+------
+--------+---------------+
+6 rows in set (0.00 sec)
+
+mysql> alter table faculty modify vacationHours varchar(20);
+Query OK, 6 rows affected (2.51 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+mysql> select * from faculty;
++-----------+---------+--------------------------------+--------+--------+------
+--------+---------------+
+| facultyid | name    | dept                           | gender | salary | worki
+ngHours | vacationHours |
++-----------+---------+--------------------------------+--------+--------+------
+--------+---------------+
+|         1 | Aakash  | Computer Science               | M      |  50000 |
+     45 | NULL          |
+|         2 | Sahil   | Electronics and Communication  | M      |  25000 |
+     50 | NULL          |
+|         3 | John    | Humanities and Social Sciences | M      | 100000 |
+     60 | NULL          |
+|         4 | Shelley | Computer Science               | F      |  75000 |
+     80 | NULL          |
+|         5 | Anannya | Computer Science               | F      |  45000 |
+    100 | NULL          |
+|         6 | Sia     | Humanities and Social Sciences | F      |  60000 |
+     40 | NULL          |
++-----------+---------+--------------------------------+--------+--------+------
+--------+---------------+
+6 rows in set (0.00 sec)
+
+mysql> update faculty set vacationHours="not allowed" where workingHours<=50;
+Query OK, 3 rows affected (0.10 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+mysql> select * from faculty;
++-----------+---------+--------------------------------+--------+--------+------
+--------+---------------+
+| facultyid | name    | dept                           | gender | salary | worki
+ngHours | vacationHours |
++-----------+---------+--------------------------------+--------+--------+------
+--------+---------------+
+|         1 | Aakash  | Computer Science               | M      |  50000 |
+     45 | not allowed   |
+|         2 | Sahil   | Electronics and Communication  | M      |  25000 |
+     50 | not allowed   |
+|         3 | John    | Humanities and Social Sciences | M      | 100000 |
+     60 | NULL          |
+|         4 | Shelley | Computer Science               | F      |  75000 |
+     80 | NULL          |
+|         5 | Anannya | Computer Science               | F      |  45000 |
+    100 | NULL          |
+|         6 | Sia     | Humanities and Social Sciences | F      |  60000 |
+     40 | not allowed   |
++-----------+---------+--------------------------------+--------+--------+------
+--------+---------------+
+6 rows in set (0.00 sec)
+
+mysql> update faculty set vacationHours=20 where workingHours<=80;
+Query OK, 5 rows affected (0.09 sec)
+Rows matched: 5  Changed: 5  Warnings: 0
+
+mysql> update faculty set vacationHours=40 where workingHours<=120;
+Query OK, 6 rows affected (0.14 sec)
+Rows matched: 6  Changed: 6  Warnings: 0
+
+q3.
+----
+
+Super Key:
+----------
+Super key are all the combination of attributes using whic we can find
+ records uniquely.
+
+Candidate Key:
+-------------
+It is the minimal set of super key. A candiadate key should not contain a 
+super key as a subset.
+
+Primary Key:
+------------
+From the candidate keys Data Base Admin will choose a key that will have 
+the min set of attributes, Sometimes it may not have min attributes.
+
+Prime & Non Prime Attributes:
+-----------------------------
+Those attributes which are part of a candidate key are called prime attribues.
+Non prime attributes are those which are not part part of any candidate key.
+
+q4.
+----
+
+mysql> desc students;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| studentid | int         | NO   | PRI | NULL    |       |
+| name      | varchar(20) | YES  |     | NULL    |       |
+| address   | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc marks;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| marksid   | int         | NO   | PRI | NULL    |       |
+| subject   | varchar(20) | YES  |     | NULL    |       |
+| score     | int         | YES  |     | NULL    |       |
+| studentid | int         | YES  | MUL | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+ 

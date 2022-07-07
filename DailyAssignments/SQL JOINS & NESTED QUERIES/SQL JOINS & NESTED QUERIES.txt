@@ -1,0 +1,129 @@
+q1.
+
+mysql> select * from course;
++------+-------+
+| cid  | cname |
++------+-------+
+| c1   | DSA   |
+| c2   | JAVA  |
+| c3   | MERN  |
++------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select * from studentCourse;
++------+------+
+| cid  | id   |
++------+------+
+| c1   | s1   |
+| c3   | s1   |
+| c1   | s2   |
+| c2   | s3   |
+| c2   | s4   |
+| c3   | s4   |
+| c2   | s5   |
++------+------+
+7 rows in set (0.00 sec)
+mysql> select * from student;
++----+--------+---------+------------+------+
+| id | name   | address | phone      | age  |
++----+--------+---------+------------+------+
+| s1 | Ram    | DEL     | 9414766530 |   18 |
+| s2 | Ramesh | GUR     | 9414766000 |   18 |
+| s3 | Surjit | CHAN    | 9555766000 |   20 |
+| s4 | Suresh | DEL     | 9555766797 |   18 |
+| s5 | Ratan  | DEL     | 9555766711 |   20 |
++----+--------+---------+------------+------+
+5 rows in set (0.00 sec)
+mysql> select * from student where address="DEL" AND id IN(select id from studen
+tCourse where cid=(select cid from course where cname="JAVA"));
++----+--------+---------+------------+------+
+| id | name   | address | phone      | age  |
++----+--------+---------+------------+------+
+| s4 | Suresh | DEL     | 9555766797 |   18 |
+| s5 | Ratan  | DEL     | 9555766711 |   20 |
++----+--------+---------+------------+------+
+2 rows in set (0.00 sec)
+
+q2.
+
+mysql> select * from movie;
++------+-----------------+----------------+------+--------+
+| id   | title           | director       | year | length |
++------+-----------------+----------------+------+--------+
+|    1 | toy story       | John Lasseter  | 1995 |     81 |
+|    2 | A bugs life     | John Lasseter  | 1998 |     95 |
+|    3 | Toy story 2     | John Lasseter  | 1999 |     93 |
+|    4 | Monsters Inc.   | Pete Docker    | 2001 |     92 |
+|    5 | Civil War       | Andrew Stanton | 2003 |    107 |
+|    6 | The Incredibles | Brad Bird      | 2004 |    116 |
++------+-----------------+----------------+------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from movieRating;
++---------+--------+---------------+-----------+
+| movieid | rating | domesticSales | intrSales |
++---------+--------+---------------+-----------+
+|       1 |    8.2 |          3200 |      9900 |
+|       2 |    7.4 |          1200 |      9980 |
+|       3 |    8.0 |          7200 |      7980 |
+|       4 |    6.4 |          1200 |      4980 |
+|       5 |    8.0 |          6200 |      4980 |
+|       6 |    8.0 |          8200 |      4980 |
++---------+--------+---------------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> select m.title, r.domesticSales, r.intrSales from movie m INNER JOIN movi
+eRating r ON m.id=r.movieid AND r.domesticSales<r.intrSales;
++---------------+---------------+-----------+
+| title         | domesticSales | intrSales |
++---------------+---------------+-----------+
+| toy story     |          3200 |      9900 |
+| A bugs life   |          1200 |      9980 |
+| Toy story 2   |          7200 |      7980 |
+| Monsters Inc. |          1200 |      4980 |
++---------------+---------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> select m.title from movie m INNER JOIN movieRating r ON m.id=r.movieid OR
+DER BY r.rating DESC;
++-----------------+
+| title           |
++-----------------+
+| toy story       |
+| Toy story 2     |
+| Civil War       |
+| The Incredibles |
+| A bugs life     |
+| Monsters Inc.   |
++-----------------+
+6 rows in set (0.00 sec)
+
+q3. 
+
+mysql> select * from person;
++----------+----------+-----------+
+| personid | lastname | firstname |
++----------+----------+-----------+
+|        1 | Wang     | Allen     |
+|        2 | Alice    | Bob       |
++----------+----------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> select * from address;
++-----------+----------+-----------+------------+
+| addressid | personid | city      | state      |
++-----------+----------+-----------+------------+
+|         1 |        2 | New York  | New York   |
+|         2 |        3 | San Diego | California |
++-----------+----------+-----------+------------+
+2 rows in set (0.00 sec)
+
+mysql> select p.firstname, p.lastname, a.city, a.state from person p LEFT JOIN a
+ddress a ON p.personid=a.personid;
++-----------+----------+----------+----------+
+| firstname | lastname | city     | state    |
++-----------+----------+----------+----------+
+| Allen     | Wang     | NULL     | NULL     |
+| Bob       | Alice    | New York | New York |
++-----------+----------+----------+----------+
+2 rows in set (0.00 sec)
