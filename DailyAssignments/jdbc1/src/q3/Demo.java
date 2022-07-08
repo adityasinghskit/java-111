@@ -1,0 +1,37 @@
+package q3;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class Demo {
+public static void main(String[] args) {
+	//loading the jdbc driver
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		System.out.println("Problem loading the driver main class");
+	}
+	//connection string
+	String cs="jdbc:mysql://localhost:3306/db1";
+	
+	//estd connection
+	try(Connection conn=DriverManager.getConnection(cs, "root", "goosebumps7");) {
+		PreparedStatement ps=conn.prepareStatement("update employee set salary=salary+500");
+		
+		int x=ps.executeUpdate();
+		
+		if(x>0) {
+			System.out.println(x+" records updated");
+		}else {
+			System.out.println("not updated");
+		}
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+}
+}
