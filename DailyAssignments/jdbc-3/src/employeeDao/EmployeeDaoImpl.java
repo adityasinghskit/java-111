@@ -15,7 +15,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
 	public int getSalaryById(int id) {
-		int salary=-1;
+		int salary=0;
 		try(Connection conn=DbUtility.provideConnection()){
 			PreparedStatement ps=conn.prepareStatement("select salary from employee3 where eid=? ");
 			ps.setInt(1, id);
@@ -61,7 +61,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	public boolean addBonus(int bonus) {
 		boolean b=false;
 		try(Connection conn=DbUtility.provideConnection()) {
-			PreparedStatement ps=conn.prepareStatement("update employee set salary=salary+?");
+			PreparedStatement ps=conn.prepareStatement("update employee3 set salary=salary+?");
 			ps.setInt(1, bonus);
 			int x=ps.executeUpdate();
 			if(x>0) {
@@ -76,16 +76,16 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 
 	@Override
-	public boolean insertEmployeeWOAddress(int eid, String name, String address) {
+	public boolean insertEmployeeWOAddress(int eid, String name, int salary) {
 		boolean b=false;
 		try(Connection conn=DbUtility.provideConnection()) {
-			PreparedStatement ps= conn.prepareStatement("insert into employee3 (int eid,String name,String address) values(?,?,?)");
+			PreparedStatement ps= conn.prepareStatement("insert into employee3 (eid,name,salary) values(?,?,?)");
 			ps.setInt(1, eid);
 			ps.setString(2, name);
-			ps.setString(3, address);
+			ps.setInt(3, salary);
 			int x=ps.executeUpdate();
 			if(x>0) {
-				b=false;
+				b=true;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -111,7 +111,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				throw new EmployeeException("No record of employee with id= "+id+" found.");
 			}
 		} catch (SQLException e) {
-			throw new EmployeeException(e.getMessage());
+			System.out.println(e.getMessage());
 		}
 		return employee;
 	}

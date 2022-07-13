@@ -14,7 +14,10 @@ public static void main(String[] args) {
 	sc.close();
 	try {
 		int salary=dao.getSalaryById(s);
+		if(salary>0)
 		System.out.println("Employee salary is "+salary);
+		else
+		System.out.println("No Employee found with that ID");
 		
 	} catch (Exception e) {
 		e.printStackTrace();
