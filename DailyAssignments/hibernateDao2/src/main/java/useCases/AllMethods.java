@@ -6,7 +6,7 @@ import entity.Employee;
 import interfaces.EmployeeDao;
 import interfaces.EmployeeDaoImpl;
 
-public class GetAddress {
+public class AllMethods {
 public static void main(String[] args) {
 	EmployeeDao dao= new EmployeeDaoImpl();
 	Scanner sc=new Scanner(System.in);
