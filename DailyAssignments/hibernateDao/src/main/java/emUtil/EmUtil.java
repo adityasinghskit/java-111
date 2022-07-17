@@ -10,7 +10,7 @@ public class EmUtil {
 	private static EntityManagerFactory emf;
 	
 	static{
-		emf=Persistence.createEntityManagerFactory("account-unit");
+		emf=Persistence.createEntityManagerFactory("db1Account");
 	}
 	
 	public static EntityManager provideEntityManager(){
