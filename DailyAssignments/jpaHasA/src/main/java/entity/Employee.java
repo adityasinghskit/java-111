@@ -1,10 +1,16 @@
 package entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 
 @Entity
 public class Employee {
@@ -15,20 +21,22 @@ public class Employee {
 	private String gender;
 	private int salary;
 	
+	@ElementCollection
 	@Embedded
-	private Address addr;  //here Address obj will be treated as value obj
+	@JoinTable(name="empaddress",joinColumns=@JoinColumn(name="emp_id"))
+	private Set<Address> addresses=new HashSet<Address>();
 
 	public Employee() {
 		super();
 	}
 
-	public Employee(int empID, String name, String gender, int salary, Address addr) {
+	public Employee(int empID, String name, String gender, int salary, Set<Address> addresses) {
 		super();
 		this.empID = empID;
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
-		this.addr = addr;
+		this.addresses = addresses;
 	}
 
 	public int getEmpID() {
@@ -63,19 +71,19 @@ public class Employee {
 		this.salary = salary;
 	}
 
-	public Address getAddr() {
-		return addr;
+	public Set<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddr(Address addr) {
-		this.addr = addr;
+	public void setAddresses(Set<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 	@Override
 	public String toString() {
-		return "Employee [empID=" + empID + ", name=" + name + ", gender=" + gender + ", salary=" + salary + ", addr="
-				+ addr + "]";
+		return "Employee [empID=" + empID + ", name=" + name + ", gender=" + gender + ", salary=" + salary
+				+ ", addresses=" + addresses + "]";
 	}
-	
+
 	
 }
