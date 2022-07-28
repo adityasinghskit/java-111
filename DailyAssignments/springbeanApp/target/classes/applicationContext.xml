@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="mb" class="main.MyBusinessClass" />
+	<bean id="c" class="main.Car"/>
+	<bean id="b" class="main.Bike"/>
+	<bean id="t" class="main.Travel">
+	<property name="v" ref="b"/>
+	<property name="noOfPerson" value="10"/>
+	</bean>
+</beans>

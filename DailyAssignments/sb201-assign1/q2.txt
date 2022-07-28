@@ -1,0 +1,8 @@
+Spring IOC(Inversion of Control):
+------------
+- Normally in the dependent-dependency realtionship classes, the object of 
+dependency is created by the dependent class, and its methods are called.
+-  But in IOC an external entity takes care of creation of object of 
+dependency.
+-In Spring the spring IOC container pushes dependency object in dependency 
+classes.  

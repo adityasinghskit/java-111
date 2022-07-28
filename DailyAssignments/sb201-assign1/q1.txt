@@ -1,0 +1,34 @@
+
+Tight coupling:
+---------------
+Let there are two classes A & B, A is dependent upon B ie. B is dependency.
+E.g.
+class B{
+
+funB(){
+syso();
+}
+}
+
+class A{
+B b1;
+
+funA(){
+b1.funB();
+
+}
+
+} 
+
+Here if there is a change in class B the same should be reflected in class A
+, this is called tight coulping.
+
+Loose Coupling:
+----------------
+-Loose coupling is when changes in dependencies need not be reflected in 
+the dependent class.
+-To apply loose coupling we need to follow rules:
+1. Dependency classes should follow POJO/POJI model.
+2. Apply dependency injection method.
+
+Eg. See q3.
