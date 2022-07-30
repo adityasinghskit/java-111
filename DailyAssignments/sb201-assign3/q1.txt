@@ -1,0 +1,49 @@
+Annotations:
+-------------
+1. @Service:
+-It is a stereotype annotation, it deines the role of a class as a service 
+level class.
+2. @Component:
+-It is also a stereotype annotation , this is used when we are not sure about 
+the role of the class.
+3. @Autowired:
+-It is applies before a variable, setter mathod, constructor.
+-It automatically gives setter to the variable so need to write a setter
+-It is used only with user defined variable.
+-It searches first byName than byType.
+E.g.
+	@Service
+	public class A {
+	@Autowired
+	private B b1;
+	public void funA() {
+	System.out.println("inside funA of A");
+	System.out.println(b1);
+	}
+	}
+4. @ComponentScan:
+-Using ComponentScan the container searches a base package and all its 
+subpackages for classes with stereotype annotation and registers tham as 
+spring bean.
+5. @Bean:
+-This annotation is used to register a class as a spring bean.
+-It is used in the configApp class before the method that returns the
+ class that we want to register.
+E.g.
+	@Configuration
+	@ComponentScan(basePackages = "com.masai")
+	public class AppConfig {
+	@Bean
+	public B getB(){
+	B b1=new B();
+	return b1;
+	}
+6. @Value:
+-This annotation is used to enter values in the primitive variables.
+E.g.
+@Value("100")
+int roll=100;
+@Value("Ram")
+String name;
+-This can also be done through a .properties file.
+
