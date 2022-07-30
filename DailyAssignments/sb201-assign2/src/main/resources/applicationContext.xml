@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="sl" class="com.masai.ServiceLayer" init-method="init" />
+	
+	<bean id="pl" class="com.masai.PresentationLayer" destroy-method="destroy">
+	<property name="sl" ref="sl"/>
+	<property name="a" value="4"/>
+	<property name="b" value="5"/>
+	
+	</bean>
+	
+	<bean id="runner" class="com.masai.Runner" />
+	
+	
+</beans>

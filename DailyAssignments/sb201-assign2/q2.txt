@@ -1,0 +1,19 @@
+Bean life cycle:
+----------------
+Bean lifecycle has 5 stages:
+1. Does not exist phase:
+-In this phase our bean does not exist
+2. Instantiation phase:
+-In this phase the container loades the spring bean class into the memory, It 
+creates the spring bean object & resolves its dependencies.
+3. Initialisation phase:
+-In this phase the initialisation method(init-method) is called by the 
+container.
+4. Service phase:
+-In this phase the container provides the bean object refrence to the user, the
+user can call the business methods.
+5. Destroy phase:
+In this phase the container calls the destroy method(destroy-method) before the
+container is shutdown.
+
+Now all the beans are eligible for garbage collection.  
