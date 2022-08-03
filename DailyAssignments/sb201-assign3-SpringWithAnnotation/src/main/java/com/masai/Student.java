@@ -22,8 +22,6 @@ public Student(String name, int roll, int marks) {
 @Override
 public String toString() {
 	return "Student [name=" + name + ", roll=" + roll + ", marks=" + marks + "]";
+	
 }
-
-
-
 }

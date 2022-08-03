@@ -1,0 +1,19 @@
+Difference between WebService & Web Application:
+------------------------------------------------
+1. WebService(WS) is also a type of WebApplication(WA), WS generates results in form
+of raw data (json,xml,text,etc) whereas WA generates results in form of html responce
+(Webpages).
+2. This raw data genrated by WS can be used by other WA or any other application 
+developed in any other language.
+3. In case of WA the http client will be web browser software, whereas in case of
+WS the client could be one of the following:
+a. browser s/w
+b. postman s/w
+c. angular app
+d. react app
+e. Some other app in another language.etc 
+Example:
+-WS: Indigo API: This provides raw data of flight information, and can be 
+used any travel booking website.
+-WA: Yatra.com: This takes data from different WS and show result in from 
+of webpages.

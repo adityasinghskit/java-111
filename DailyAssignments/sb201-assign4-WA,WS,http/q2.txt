@@ -1,0 +1,12 @@
+Difference between Static and dynamic webapges:
+-----------------------------------------------
+1. In Static webages content is fixed for all users, it is precreated(before client
+ request).Eg Wikipedia, mdn, w3schools. Whereas in dyanmic webpages content will 
+change dynamically based on the input given by user.Eg fb,youtube, twitter.
+
+2. Webresources that generate static webpages are called static webresource program
+.Eg. html. Whereas webresource that can generate dynamic webresource program. Eg.
+Servlet program and jsp program.
+
+Note: Web application is a combination of static resource(html,css,image,mp3) and 
+dynamic resource(servlet and jsp). 
