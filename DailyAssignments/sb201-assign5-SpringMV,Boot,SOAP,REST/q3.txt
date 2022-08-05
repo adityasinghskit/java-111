@@ -1,0 +1,10 @@
+Servlet:
+--------
+-Servlet is an implementation class its role is:
+	1. To handle clients request.
+	2. Validate the data.
+ 
+Displatcher Servlet:
+-----------------------
+-It takes the request from the client and fetches request handler method from Helper
+Controller.

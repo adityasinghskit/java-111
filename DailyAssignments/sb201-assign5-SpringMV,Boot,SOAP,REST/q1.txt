@@ -1,0 +1,32 @@
+MVC architecture:
+-----------------
+
+-Web appliation(WA) consists of static and dynamic componets, and the data access
+logic, business logic, and presentation logic are together and interdependent, there
+is no clear separation of logic.
+
+Using Servlet and jsp:
+----------------------
+http request:
+-------------
+
+- The client request is captured by Servlet implementation class which also 
+validates the data.
+- It then transfers the data to the service layer which processes the data.
+- The data is then transfered to data access layer which persists the data in the
+database.  
+
+http response:
+---------------
+
+-The data is fetched from the database, into the DAL layer, into SL .
+-After getting responce from SL jsp will generate a dynamic html.
+
+After MVC:
+----------
+
+-If we want to generate a WA using MVC architecture manually, than we have to 
+develop servlet class, jsp class and write the flow control logic manually.
+-But using spring-web-mvc module it provides a predefined servlet class with 
+predefined flow control logic ie. Dispatcher Servlet class. 
+ 

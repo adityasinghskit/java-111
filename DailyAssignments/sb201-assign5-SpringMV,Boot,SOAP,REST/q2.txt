@@ -1,0 +1,23 @@
+Difference between SOAP and REST api:
+--------------------------------------
+
+SOAP api(Simple Object Access Protocol):
+
+- It uses an xml based protocal to communicate between client and server application.
+Due to which it is platform independent.
+- WSDL file is also an xml file describes the services which we give to the clients.
+-SOAP based WS is a heavy weight application because along with the main classes 
+we also have to create some binding classes to parse the xml and create java 
+objects. Creating WSDL file is also a complex task.
+
+REST api(Represantational State Transfer):
+------------------------------------------
+
+- To make the WS creation as light as possible REST architecture was developed.
+- In REST architecture we craete a WS with required classes but expose them using 
+http protocol, Client can access them using http protocol without the use of extra
+ binding classes and xml files.
+-Based in the architecture sun microsystem came out with JAX-RS api to create 
+REStful webservices.
+-In REST WS, the root class is called the "root resource" class and each method is
+called each method of that  is called a "resource".
