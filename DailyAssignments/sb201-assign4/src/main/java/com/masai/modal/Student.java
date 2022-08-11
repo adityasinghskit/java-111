@@ -1,47 +1,51 @@
-package com.masai;
+package com.masai.modal;
 
+import lombok.Data;
+
+@Data
 public class Student {
-private int roll;
+private Integer roll;
 private String name;
-private int marks;
-//private Address address;
+private Integer marks;
+
 public Student() {
 	super();
 }
-public Student(int roll, String name, int marks) {
+
+public Student(Integer roll, String name, Integer marks) {
 	super();
 	this.roll = roll;
 	this.name = name;
 	this.marks = marks;
-	//this.address = address;
 }
 
-
-public int getRoll() {
+public Integer getRoll() {
 	return roll;
 }
-public void setRoll(int roll) {
+
+public void setRoll(Integer roll) {
 	this.roll = roll;
 }
+
 public String getName() {
 	return name;
 }
+
 public void setName(String name) {
 	this.name = name;
 }
-public int getMarks() {
+
+public Integer getMarks() {
 	return marks;
 }
-public void setMarks(int marks) {
+
+public void setMarks(Integer marks) {
 	this.marks = marks;
 }
+
 @Override
 public String toString() {
 	return "Student [roll=" + roll + ", name=" + name + ", marks=" + marks + "]";
 }
-
-
-
-
 
 }
