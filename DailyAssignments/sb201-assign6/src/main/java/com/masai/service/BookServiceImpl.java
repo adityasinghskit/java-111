@@ -70,7 +70,7 @@ public class BookServiceImpl implements BookService {
 		else
 			throw new BookException("No book found");
 	}
-
+/*
 	@Override
 	public List<BookDTO> getAllBooksDTO() throws BookException {
 		List<BookDTO> list=bDao.getAllBooksDTO();
@@ -92,5 +92,5 @@ public class BookServiceImpl implements BookService {
 		else
 			throw new BookException("No book found with id: "+id);
 	}
-
+*/
 }

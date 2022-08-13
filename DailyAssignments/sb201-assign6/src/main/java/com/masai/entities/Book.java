@@ -28,7 +28,6 @@ import lombok.ToString;
 public class Book {
 @Id
 @GeneratedValue(strategy=GenerationType.AUTO)
-@NotNull
 @Min(value=1,message="id should more than 0")
 private Integer bookId;
 private String name;

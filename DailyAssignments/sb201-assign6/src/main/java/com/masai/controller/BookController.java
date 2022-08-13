@@ -35,6 +35,7 @@ public class BookController {
 		Book foundBook= bService.getBookById(id);
 		return new ResponseEntity<Book>(foundBook,HttpStatus.ACCEPTED);
 	}
+	/*
 	//Reader API
 	@GetMapping("/books/reader")
 	public ResponseEntity<List<BookDTO>> getAllBooksReader(){
@@ -46,7 +47,7 @@ public class BookController {
 		BookDTO foundBook= bService.getBookByIdDTO(id);
 		return new ResponseEntity<BookDTO>(foundBook,HttpStatus.ACCEPTED);
 	}
-	
+	*/
 	@PostMapping("/books")
 	public ResponseEntity<Book> addBook(@Valid @RequestBody Book book){
 		

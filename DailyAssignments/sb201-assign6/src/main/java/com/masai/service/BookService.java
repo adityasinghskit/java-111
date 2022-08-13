@@ -10,9 +10,10 @@ import com.masai.exception.InvalidIdException;
 public interface BookService {
 public List<Book> getAllBooks() throws BookException;
 public Book getBookById(Integer id) throws InvalidIdException;
-//Reader
+/*//Reader
 public List<BookDTO> getAllBooksDTO() throws BookException;
 public BookDTO getBookByIdDTO(Integer id) throws InvalidIdException;
+*/
 public Book addBook(Book book);
 public Book deleteBook(Book book) throws BookException;
 public Book updateBook(Book book) throws BookException;
