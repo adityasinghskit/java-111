@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masai.entities.Student;
+import com.masai.entities.StudentDTO;
 import com.masai.exception.StudentException;
 import com.masai.repository.StudentDao;
 @Service
@@ -83,7 +84,7 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public String getStudentNameByRoll(Integer roll) throws StudentException {
 		String name=sDao.getStudentNameByRoll(roll);
-		if(name==null)
+		if(name!=null)
 			return name;
 		else 
 			throw new StudentException("Student does not exsist for roll: "+roll);
@@ -92,10 +93,19 @@ public class StudentServiceImpl implements StudentService {
 	@Override
 	public String getStudentNameAndMarksByRoll(Integer roll) throws StudentException {
 		String name=sDao.getStudentNameAndMarksByRoll(roll);
-		if(name==null)
+		if(name!=null)
 			return name;
 		else 
 			throw new StudentException("Student does not exsist for roll: "+roll);	}
+
+	@Override
+	public StudentDTO getStudentDTOByRoll(Integer roll) throws StudentException {
+		StudentDTO sto=sDao.getStudentDTONameAndMarksByRoll(roll);
+		if(sto!=null)
+			return sto;
+		else
+			throw new StudentException("Student does not exsist for roll: "+roll);
+	}
 	
 	
 	

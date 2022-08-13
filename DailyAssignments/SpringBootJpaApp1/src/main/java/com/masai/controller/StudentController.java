@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.entities.Student;
+import com.masai.entities.StudentDTO;
 import com.masai.service.StudentService;
 
 @RestController
@@ -70,5 +71,9 @@ private StudentService sService;
 	@GetMapping("/getnamemarksbyroll/{roll}")
 	public String getStudentNameAndMarksByRoll(@PathVariable("roll") Integer roll){
 		return sService.getStudentNameByRoll(roll);
+	}
+	@GetMapping("/getstudentdtobyroll/{roll}")
+	public StudentDTO getStudentDTOByRoll(@PathVariable("roll") Integer roll){
+		return sService.getStudentDTOByRoll(roll);
 	}
 }
