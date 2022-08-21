@@ -8,7 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.masai.entity.Cab;
 import com.masai.entity.Driver;
-import com.masai.exception.DriverException;
+import com.masai.entity.DriverDTO;
+import com.masai.exception.DriverNotFoundException;
 import com.masai.exception.InvalidId;
 import com.masai.repository.CabDao;
 import com.masai.repository.DriverDao;
@@ -25,8 +26,7 @@ public class DriverServiceImpl implements DriverService {
 	public Driver insertDriver(Driver driver) {
 		Cab cab= driver.getCab();
 		cDao.save(cab);
-		Driver savedDriver= dDao.save(driver);
-		return savedDriver;
+		return dDao.save(driver);
 	}
 
 	@Override
@@ -36,43 +36,61 @@ public class DriverServiceImpl implements DriverService {
 		
 		Optional<Driver> opt=dDao.findById(id);
 		
-		return opt.orElseThrow(() -> new DriverException("No Driver found for id: "+id));
+		return opt.orElseThrow(() -> new DriverNotFoundException("No Driver found for id: "+id));
 	}
 
 	@Override
-	public Driver updateDriver(Driver driver) throws DriverException{
-		Optional<Driver> opt= dDao.findById(driver.getUserId());
+	public Driver updateDriver(Integer id,Integer license, Boolean available) throws DriverNotFoundException{
+		Optional<Driver> opt= dDao.findById(id);
 		if(opt.isPresent()) {
-			Cab cab= driver.getCab();
-			Optional<Cab> opt2=cDao.findById(cab.getCabId());
-			if(!opt2.isPresent())
-			cDao.save(cab);
-			
-			return dDao.save(driver);
+
+			Driver fDriver=opt.get();
+			fDriver.setLicenseNo(license);
+			fDriver.setAvailable(available);
+			Cab fCab= fDriver.getCab();
+			fCab.setDriver(fDriver);
+			cDao.save(fCab);
+			return dDao.save(fDriver);
+
 		}
 			
 		else
-			throw new DriverException("No Driver found ");
+			throw new DriverNotFoundException("No Driver found ");
 	}
 
 	@Override
-	public Driver deleteDriver(Driver driver) throws DriverException{
-		Optional<Driver> opt=dDao.findById(driver.getUserId());
+
+	public Driver deleteDriverById(Integer id) throws DriverNotFoundException{
+		Optional<Driver> opt=dDao.findById(id);
+
 		if(opt.isPresent()) {
-			dDao.delete(driver);
-			return driver;
+			cDao.delete(opt.get().getCab());
+			dDao.delete(opt.get());
+			return opt.get();
 		}
 		else
-			throw new DriverException("No Driver found ");
+			throw new DriverNotFoundException("No Driver found ");
 	}
 
 	@Override
-	public List<Driver> viewBestDriver() throws DriverException {
+	public List<Driver> viewBestDriver() throws DriverNotFoundException {
 		List<Driver> drivers= dDao.viewBestDriver();
 		if(drivers.size()>0)
 			return drivers;
 		else
-			throw new DriverException("No Driver found with rating>=4.5");
+			throw new DriverNotFoundException("No Driver found with rating>=4.5");
+	}
+
+	@Override
+	public DriverDTO getDriverDTOById(Integer id) throws InvalidId {
+		if(id<1) 
+			throw new InvalidId("id cannot be less than 1");
+		Optional<Driver> opt= dDao.findById(id);
+		if(opt.isPresent()) {
+			return dDao.getDriverDTOById(id);
+		}
+		else
+			throw new DriverNotFoundException("No Driver found with id "+id);
 	}
 
 	

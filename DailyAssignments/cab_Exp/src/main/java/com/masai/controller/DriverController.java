@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.masai.entity.Driver;
+import com.masai.entity.DriverDTO;
 import com.masai.service.DriverService;
 
 @RestController
@@ -35,18 +37,26 @@ public ResponseEntity<Driver> viewDriverById(@PathVariable("id") Integer id){
 	return new ResponseEntity<Driver>(foundDriver,HttpStatus.ACCEPTED);
 }
 @PutMapping("/drivers")
-public String updateDriver(@Valid @RequestBody Driver driver) {
-	Driver updateddriver=dService.updateDriver(driver);
-	return "Driver updated "+updateddriver;
+public ResponseEntity<Driver> updateDriver(@RequestParam Integer id,
+							@RequestParam Integer lic,
+							@RequestParam Boolean avail) {
+	Driver driver=dService.updateDriver(id,lic,avail);
+	return new ResponseEntity<Driver>(driver,HttpStatus.ACCEPTED);
 }
-@DeleteMapping("/drivers")
-public String deleteDriver(@Valid @RequestBody Driver driver) {
-	Driver deletedDriver=dService.deleteDriver(driver);
-	return "Driver deleted "+deletedDriver;
+@DeleteMapping("/drivers/{id}")
+public ResponseEntity<Driver> deleteDriverById(@PathVariable("id") Integer id) {
+	Driver driver=dService.deleteDriverById(id);
+	return new ResponseEntity<Driver>(driver,HttpStatus.ACCEPTED);
 }
 @GetMapping("/topDrivers")
 public ResponseEntity<List<Driver>> viewBestDrivers(){
 	List<Driver> list=dService.viewBestDriver();
 	return new ResponseEntity<List<Driver>>(list,HttpStatus.ACCEPTED);
+}
+@GetMapping("/driverDTO")
+public ResponseEntity<DriverDTO> getDriverDTOById(@RequestParam("id") Integer id){
+	DriverDTO dto=dService.getDriverDTOById(id);
+	return new ResponseEntity<DriverDTO>(dto,HttpStatus.ACCEPTED);
+	
 }
 }
