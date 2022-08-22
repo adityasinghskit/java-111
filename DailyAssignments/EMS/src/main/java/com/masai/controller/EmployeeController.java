@@ -50,7 +50,7 @@ public ResponseEntity<List<Employee>> findByDeptName(String deptName){
 	return new ResponseEntity<List<Employee>>(list,HttpStatus.ACCEPTED);
 }
 */
-@GetMapping("/employee/{id}")
+@GetMapping("/employees/{id}")
 public ResponseEntity<EmployeeDTO> findEmployeeDTOById(@PathVariable Integer id){
 	EmployeeDTO dto= eService.findEmployeeDTOById(id);
 	return new ResponseEntity<EmployeeDTO>(dto,HttpStatus.ACCEPTED);

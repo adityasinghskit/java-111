@@ -12,6 +12,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +35,6 @@ private String name;
 @Min(value=1, message="Salary cannot be negetive")
 private Integer salary;
 @ManyToOne(cascade=CascadeType.ALL)
-@JoinColumn(name="dept")
 private Department department;
+
 }

@@ -15,6 +15,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,17 +27,18 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Department {
-
-
+@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
 @Min(value=1, message="deptId cannot be negetive")
 private Integer deptId;
 
-@Id
 @NotNull
 @Enumerated(EnumType.STRING)
-private DeptName DeptName;
+private DeptName deptName;
 @NotNull
 @Size(min=3, max=16, message="Address should be between 3 & 16 in size")
 private String address;
-
+@OneToMany(cascade =CascadeType.ALL, mappedBy="department")
+@JsonIgnore
+List<Employee> employees= new ArrayList<>();
 }
