@@ -33,26 +33,9 @@ public class StudentController {
 	public ResponseEntity<Student> saveStudentHandler(@RequestBody Student student) {
 		
 		Student savedStudent =  sService.saveStudent(student);
-		
-		
-		
 		return new ResponseEntity<Student>(savedStudent,HttpStatus.CREATED);
 		
 	}
-	
-	
-	
-
-	
-	
-	@GetMapping("/{roll}")
-	public Student getStudenthandler(@PathVariable("roll") Integer roll) {
-		
-		return sService.getStudentByRoll(roll);
-		
-		
-	}
-	
 	@GetMapping("/")
 	public ResponseEntity<List<Student>> getAllStudentHandler() {
 		
@@ -61,13 +44,6 @@ public class StudentController {
 		return new ResponseEntity<List<Student>>(students,HttpStatus.OK);
 		
 	}
-	
-	@DeleteMapping("/{roll}")
-	public Student deleteStudentById(@PathVariable("roll") Integer roll)  {
-		
-		return sService.deleteStudentByRoll(roll);
-	}
-	
 	@PutMapping("/")
 	public ResponseEntity<Student> updateStudentHandler(@RequestBody Student student) {
 		
@@ -77,6 +53,21 @@ public class StudentController {
 		return new ResponseEntity<Student>(updatedStudent,HttpStatus.ACCEPTED);
 		
 	}
+	@GetMapping("/{roll}")
+	public ResponseEntity<Student> getStudenthandler(@PathVariable("roll") Integer roll) {
+		
+		Student std=sService.getStudentByRoll(roll);
+		return new ResponseEntity<Student>(std,HttpStatus.ACCEPTED); 
+		
+		
+	}
+	@DeleteMapping("/{roll}")
+	public Student deleteStudentById(@PathVariable("roll") Integer roll)  {
+		
+		return sService.deleteStudentByRoll(roll);
+	}
+	
+	
 	
 	@PutMapping("/{roll}")
 	public ResponseEntity<Student> updateStudentMarksHandler(@PathVariable("roll") Integer roll, @RequestParam("marks") Integer gMarks){

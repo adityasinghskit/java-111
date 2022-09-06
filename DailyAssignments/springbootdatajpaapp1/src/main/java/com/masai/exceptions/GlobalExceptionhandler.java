@@ -28,25 +28,6 @@ public class GlobalExceptionhandler {
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST );
 	}
 	
-	
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<MyErrorDetails> myExpHandler2(Exception ie,WebRequest wr)  {
-		System.out.println("inside myHandler2 method...");
-		
-		MyErrorDetails err= new MyErrorDetails();
-		err.setTimestamp(LocalDateTime.now());
-		err.setMessage(ie.getMessage());
-		err.setDescription(wr.getDescription(false));
-		
-		
-		
-		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST );	
-		
-	
-	}
-	
-
-
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ResponseEntity<MyErrorDetails> mynotFoundHandler(NoHandlerFoundException nfe,WebRequest req)  {
 			
@@ -68,7 +49,21 @@ MyErrorDetails err=new MyErrorDetails(LocalDateTime.now(),"Validation Error",me.
 			
 	}
 	
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<MyErrorDetails> myExpHandler2(Exception ie,WebRequest wr)  {
+		System.out.println("inside myHandler2 method...");
+		
+		MyErrorDetails err= new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDescription(wr.getDescription(false));
+		
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST );	
+		
 	
+	}
 	
 	
 	// 1: application specific
